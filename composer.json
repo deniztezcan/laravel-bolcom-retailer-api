@@ -1,0 +1,42 @@
+{
+    "name": "deniztezcan/laravel-bolcom-v3-api",
+    "description": "Laravel package for the Bol.com v3 Retailer API",
+    "type": "library",
+    "license": "MIT",
+    "version": "0.2.0",
+    "homepage": "https://github.com/deniztezcan/laravel-bolcom-v3-api",
+    "authors": [
+        {
+            "name": "Deniz Tezcan",
+            "email": "howdy@deniztezcan.me"
+        }
+    ],
+     "keywords": [
+        "api",
+        "php",
+        "bol",
+        "bolcom",
+        "v3",
+        "retailer",
+        "laravel"
+    ],
+    "autoload": {
+        "psr-4": { "DenizTezcan\\BolRetailerV3" : "src/" }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "illuminate/support": "5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0",
+        "nesbot/carbon": "^2.16"
+    },
+    "extra": {
+      "laravel": {
+        "providers": [
+          "DenizTezcan\\BolRetailerV3\\BolServiceProvider"
+        ],
+        "aliases": {
+          "BolRetailerV3": "DenizTezcan\\BolRetailerV3\\Facades\\BolRetailerV3"
+        }
+      }
+    }
+}
