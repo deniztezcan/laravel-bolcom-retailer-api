@@ -21,7 +21,7 @@
         "laravel"
     ],
     "autoload": {
-        "psr-4": { "DenizTezcan\\BolRetailerV3" : "src/" }
+        "psr-4": { "DenizTezcan\\BolRetailerV3\\" : "src/" }
     },
     "minimum-stability": "stable",
     "require": {
