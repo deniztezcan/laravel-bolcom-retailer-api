@@ -7,6 +7,7 @@ use DenizTezcan\BolRetailerV3\Support\Serialize;
 use DenizTezcan\BolRetailerV3\Models\Event;
 use DenizTezcan\BolRetailerV3\Models\Orders;
 use DenizTezcan\BolRetailerV3\Models\Order;
+use DenizTezcan\BolRetailerV3\Models\Commission;
 use Exception;
 
 class BolRetailerV3
@@ -24,6 +25,14 @@ class BolRetailerV3
     public function setDemoMode(): void
     {
     	$this->client->setDemoMode(true);
+    }
+
+    public function getCommission(string $ean): Commission
+    {
+        $response = $this->client->authRequest("commission/".$ean, "GET");
+
+        $deserialized = Serializer::deserialize((string)$response->getBody());
+        return Commission::fromResponse($deserialized);
     }
 
     public function updateOffer(
