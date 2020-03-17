@@ -26,6 +26,59 @@ class BolRetailerV3
     	$this->client->setDemoMode(true);
     }
 
+    public function updateOffer(
+    	string $offerId,
+    	string $referenceCode,
+    	bool $onHoldByRetailer,
+    	string $unknownProductTitle,
+    	string $fulfilmentType,
+    	string $fulfilmentDeliveryCode
+    ): Event
+    {
+    	$response = $this->client->authenticatedRequest("PUT", "offers/".$offerId, [
+    		'referenceCode' 		=> $referenceCode,
+    		'onHoldByRetailer' 		=> $onHoldByRetailer,
+    		'unknownProductTitle' 	=> $unknownProductTitle,
+	        "fulfilment" 			=> [
+	            "type" 					=> $fulfilmentType,
+	            "deliveryCode" 			=> $fulfilmentDeliveryCode
+	        ]
+        ]);
+
+        $deserialized = Serializer::deserialize((string)$response->getBody());
+        return Event::fromResponse($deserialized);
+    }
+
+    public function updateOfferPrice(
+    	string $offerId,
+    	array $bundlePrices
+    ): Event
+    {
+    	$response = $this->client->authenticatedRequest("PUT", "offers/".$offerId."/price", [
+    		"pricing" => [
+    			"bundlePrices" => $bundlePrices
+	        ]
+        ]);
+
+        $deserialized = Serializer::deserialize((string)$response->getBody());
+        return Event::fromResponse($deserialized);
+    }
+
+    public function updateOfferStock(
+    	string $offerId,
+    	int $amount,
+    	bool $managedByRetailer
+    ): Event
+    {
+    	$response = $this->client->authenticatedRequest("PUT", "offers/".$offerId."/stock", [
+    		"amount" => $amount,
+    		"managedByRetailer" => $managedByRetailer
+        ]);
+
+        $deserialized = Serializer::deserialize((string)$response->getBody());
+        return Event::fromResponse($deserialized);
+    }
+
     public function getOrders(): Orders
     {
     	$response = $this->client->authenticatedRequest("GET", "orders");
