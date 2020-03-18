@@ -7,11 +7,11 @@ use ReflectionClass;
 
 abstract class BaseModel
 {
-	public function assertType($var, string $type)
+    public function assertType($var, string $type)
     {
         if (gettype($var) != $type)
         {
-            throw new Exception;
+            throw new Exception('Variable is not of the type: '.$type.' but is of the type: '.gettype($var));
         }
     }
 

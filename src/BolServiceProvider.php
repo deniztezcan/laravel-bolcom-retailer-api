@@ -16,7 +16,7 @@ class BolServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->app->bind('bolcom-retailer-v3', function () {
-            return new SendCloud();
+            return new BolRetailerV3();
         });
     }
 

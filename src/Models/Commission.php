@@ -19,7 +19,6 @@ class Commission extends BaseModel
         $this->assertType($this->condition, 'string');
         $this->assertType($this->fixedAmount, 'double');
         $this->assertType($this->percentage, 'integer');
-        $this->assertType($this->totalCost, 'double');
 
         if (gettype($this->reductions) == 'array')
         {
