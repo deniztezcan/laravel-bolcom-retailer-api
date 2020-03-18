@@ -4,10 +4,10 @@ namespace DenizTezcan\BolRetailerV3\Models;
 
 class Auth extends BaseModel
 {
-	public $expires_in;
-	public $access_token;
-	public $scope;
-	public $token_type;
+    public $expires_in;
+    public $access_token;
+    public $scope;
+    public $token_type;
 
     public function validate(): void
     {
