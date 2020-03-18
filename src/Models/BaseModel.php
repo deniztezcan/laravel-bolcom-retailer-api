@@ -9,13 +9,12 @@ abstract class BaseModel
 {
     public function assertType($var, string $type)
     {
-        if (gettype($var) != $type)
-        {
+        if (gettype($var) != $type) {
             throw new Exception('Variable is not of the type: '.$type.' but is of the type: '.gettype($var));
         }
     }
 
-    static private function createObject($deserialized) : object
+    private static function createObject($deserialized): object
     {
         $ref = new ReflectionClass(static::class);
         $instance = $ref->newInstanceWithoutConstructor();
@@ -29,25 +28,26 @@ abstract class BaseModel
         return $instance;
     }
 
-    static function fromResponse(object $deserialized): object
+    public static function fromResponse(object $deserialized): object
     {
         $instance = self::createObject($deserialized);
         $instance->validate();
+
         return $instance;
     }
 
-    static function manyFromResponse(array $deserialized): array
+    public static function manyFromResponse(array $deserialized): array
     {
-        $itemList = array();
+        $itemList = [];
 
-        foreach($deserialized as $item)
-        {
+        foreach ($deserialized as $item) {
             $instance = self::createObject($item);
             $instance->validate();
             array_push($itemList, $instance);
         }
+
         return $itemList;
     }
 
-    abstract function validate(): void;
+    abstract public function validate(): void;
 }

@@ -4,10 +4,10 @@ namespace DenizTezcan\BolRetailerV3\Models;
 
 class Order extends BaseModel
 {
-	public $orderId;
-	public $dateTimeOrderPlaced;
-	public $customerDetails;
-	public $orderItems;
+    public $orderId;
+    public $dateTimeOrderPlaced;
+    public $customerDetails;
+    public $orderItems;
 
     public function validate(): void
     {

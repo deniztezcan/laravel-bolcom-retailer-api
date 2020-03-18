@@ -6,13 +6,13 @@ use Carbon\Carbon;
 
 class Event extends BaseModel
 {
-	public $id;
-	public $entityId;
-	public $eventType;
-	public $description;
-	public $status;
-	public $createTimestamp;
-	public $links;
+    public $id;
+    public $entityId;
+    public $eventType;
+    public $description;
+    public $status;
+    public $createTimestamp;
+    public $links;
 
     public function validate(): void
     {

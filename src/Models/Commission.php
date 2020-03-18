@@ -12,7 +12,7 @@ class Commission extends BaseModel
     public $totalCost;
     public $totalCostWithoutReduction;
     public $reductions;
-    
+
     public function validate(): void
     {
         $this->assertType($this->ean, 'string');
@@ -20,8 +20,7 @@ class Commission extends BaseModel
         $this->assertType($this->fixedAmount, 'double');
         $this->assertType($this->percentage, 'integer');
 
-        if (gettype($this->reductions) == 'array')
-        {
+        if (gettype($this->reductions) == 'array') {
             $this->reductions = Reduction::manyFromResponse($this->reductions);
         }
     }
