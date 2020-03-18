@@ -40,8 +40,9 @@ Please set your API: `key` and `secret` in the `config/bolcom-retailer-v3.php`
 ### Features
 The following features are available (an - means the feature is planned, but not yet included):
 
+
 Method | URI | From Version | Link to Bol documentation
---- | --- | --- | --- | ---
+--- | --- | --- | ---
 POST | /retailer/commission | - | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-commissions)
 GET | /retailer/commission/{ean} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-commission)
 POST | /retailer/offers | - | [link](https://api.bol.com/retailer/public/redoc/v3#operation/post-offer)
