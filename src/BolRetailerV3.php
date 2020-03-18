@@ -38,5 +38,4 @@ class BolRetailerV3
     {
         return new Order($this->client);
     }
-
 }

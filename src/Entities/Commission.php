@@ -4,15 +4,14 @@ namespace DenizTezcan\BolRetailerV3\Entities;
 
 use DenizTezcan\BolRetailerV3\Models\Commission as CommissionModel;
 use DenizTezcan\BolRetailerV3\Models\Commissions;
-use DenizTezcan\BolRetailerV3\Models\Event;
 use DenizTezcan\BolRetailerV3\Support\Serialize;
 
 class Commission extends Entity
 {
-	public function getCommissions(array $commissionQueries): Commissions
+    public function getCommissions(array $commissionQueries): Commissions
     {
         $response = $this->client->authenticatedRequest('POST', 'commission', [
-            'commissionQueries' => $commissionQueries
+            'commissionQueries' => $commissionQueries,
         ]);
         $deserialized = Serialize::deserialize((string) $response->getBody());
 
