@@ -43,13 +43,14 @@ The following features are available (an - means the feature is planned, but not
 
 Method | URI | From Version | Link to Bol documentation
 --- | --- | --- | ---
-POST | /retailer/commission | - | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-commissions)
+POST | /retailer/commission | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-commissions)
 GET | /retailer/commission/{ean} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-commission)
-POST | /retailer/offers | - | [link](https://api.bol.com/retailer/public/redoc/v3#operation/post-offer)
-GET | /retailer/offers/{offer-id} | - | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-offer)
+POST | /retailer/offers | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/post-offer)
+GET | /retailer/offers/{offer-id} | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-offer)
 PUT | /retailer/offers/{offer-id} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/put-offer)
 PUT | /retailer/offers/{offer-id}/price | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/update-offer-price)
 PUT | /retailer/offers/{offer-id}/stock | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/update-offer-stock)
 GET | /retailer/orders | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-orders)
 GET | /retailer/orders/{orders-id} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-order)
+PUT | /retailer/orders/{order-item-id}/cancellation | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/cancel-order)
 PUT | /retailer/orders/{order-item-id}/shipment | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/ship-order-item)
