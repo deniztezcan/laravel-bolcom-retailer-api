@@ -2,13 +2,13 @@
 
 namespace DenizTezcan\BolRetailerV3\Entities;
 
-use DenizTezcan\BolRetailerV3\Models\Offer as OfferModel;
 use DenizTezcan\BolRetailerV3\Models\Event;
+use DenizTezcan\BolRetailerV3\Models\Offer as OfferModel;
 use DenizTezcan\BolRetailerV3\Support\Serialize;
 
 class Offer extends Entity
 {
-	public function createOffer(
+    public function createOffer(
         string $ean,
         string $conditionName,
         string $conditionCategory,
@@ -34,9 +34,9 @@ class Offer extends Entity
                 'bundlePrices'          => [
                     [
                         'quantity'          => 1,
-                        'price'             => $price
-                    ]
-                ]
+                        'price'             => $price,
+                    ],
+                ],
             ],
             'stock'                 => [
                 'amount'                => $stockAmount,
@@ -45,7 +45,7 @@ class Offer extends Entity
             'fulfilment'            => [
                 'type'                  => $fulfilmentType,
                 'deliveryCode'          => $fulfilmentDeliveryCode,
-            ]
+            ],
         ]);
 
         $deserialized = Serialize::deserialize((string) $response->getBody());
@@ -53,10 +53,11 @@ class Offer extends Entity
         return Event::fromResponse($deserialized);
     }
 
-    public function getOffer(string $offerId): OfferModel 
+    public function getOffer(string $offerId): OfferModel
     {
         $response = $this->client->authenticatedRequest('GET', 'offers/'.$offerId);
         $deserialized = Serialize::deserialize((string) $response->getBody());
+
         return OfferModel::fromResponse($deserialized);
     }
 

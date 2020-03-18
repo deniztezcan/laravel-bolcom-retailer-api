@@ -2,15 +2,12 @@
 
 namespace DenizTezcan\BolRetailerV3\Entities;
 
-use Exception;
-use ReflectionClass;
-
 class Entity
 {
-	protected $client = null;
+    protected $client = null;
 
     public function __construct($client)
     {
-    	$this->client = $client;
+        $this->client = $client;
     }
 }
