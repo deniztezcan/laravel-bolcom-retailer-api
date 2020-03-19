@@ -61,7 +61,7 @@ class Client extends AbstractClient
         array $parameters = [],
         array $headers = []
     ): Response {
-        if ($this->isAuthenticated()) {
+        if (!$this->isAuthenticated()) {
             $this->authenticate();
         }
 

@@ -11,16 +11,21 @@ class BolRetailerV3
 {
     protected $client = null;
 
-    public function __construct($client_id = null, $client_secret = null)
+    public function __construct()
     {
         if ($this->client === null) {
-            if ($client_id !== null && $client_secret !== null) {
-                $this->client = new Client($client_id, $client_secret);
-            } else {
-                $this->client = new Client(config('bolcom-retailer-v3.api.client_id'), config('bolcom-retailer-v3.api.client_secret'));
-            }
+            $this->client = new Client(config('bolcom-retailer-v3.api.client_id'), config('bolcom-retailer-v3.api.client_secret'));
         }
         $this->client->authenticate();
+    }
+
+    public function setClientIdSecret(
+        string $clientId,
+        string $clientSecret
+    ): BolRetailerV3
+    {
+        $this->client = new Client($clientId, $clientSecret);
+        return $this;
     }
 
     public function setDemoMode(): void
