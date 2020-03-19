@@ -22,9 +22,9 @@ class BolRetailerV3
     public function setClientIdSecret(
         string $clientId,
         string $clientSecret
-    ): BolRetailerV3
-    {
+    ): self {
         $this->client = new Client($clientId, $clientSecret);
+
         return $this;
     }
 
