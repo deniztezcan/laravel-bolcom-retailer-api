@@ -17,12 +17,10 @@ class Event extends BaseModel
     public function validate(): void
     {
         $this->assertType($this->id, 'integer');
-        $this->assertType($this->entityId, 'string');
         $this->assertType($this->eventType, 'string');
         $this->assertType($this->description, 'string');
         $this->assertType($this->status, 'string');
         $this->assertType($this->createTimestamp, 'string');
-        $this->assertType($this->links, 'array');
 
         $this->createTimestamp = Carbon::parse($this->createTimestamp);
     }

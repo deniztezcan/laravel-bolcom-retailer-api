@@ -4,6 +4,7 @@ namespace DenizTezcan\BolRetailerV3\Http;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
+use Guzzle\Http\Exception\ClientErrorResponseException;
 
 class AbstractClient
 {

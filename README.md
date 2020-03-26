@@ -6,7 +6,7 @@
 
 A Laravel package for the Bol.com v3 Retailer API. Losely based on the incomplete `jasperverbeet/bolcom-retailer-api-v3-php` package.
 
-### Instalation
+## Instalation
 ```
 composer require deniztezcan/laravel-bolcom-v3-api
 ```
@@ -37,7 +37,11 @@ php artisan vendor:publish --provider="DenizTezcan\BolRetailerV3\BolServiceProvi
 ### Configuration
 Please set your API: `key` and `secret` in the `config/bolcom-retailer-v3.php`
 
-### Features
+## How to use
+- [Quick Usage](#usage-usage-example)
+- [Features](#features)
+
+## Features
 The following features are available (an - means the feature is planned, but not yet included):
 
 
@@ -46,6 +50,8 @@ Method | URI | From Version | Link to Bol documentation
 POST | /retailer/commission | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-commissions)
 GET | /retailer/commission/{ean} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-commission)
 POST | /retailer/offers | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/post-offer)
+POST | /retailer/offers/export | v1.3.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/post-offer-export)
+GET | /retailer/offers/export/{offer-export-id} | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-offer-export)
 GET | /retailer/offers/{offer-id} | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-offer)
 PUT | /retailer/offers/{offer-id} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/put-offer)
 PUT | /retailer/offers/{offer-id}/price | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/update-offer-price)
