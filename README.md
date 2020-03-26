@@ -51,7 +51,7 @@ POST | /retailer/commission | v1.1.0 | [link](https://api.bol.com/retailer/publi
 GET | /retailer/commission/{ean} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-commission)
 POST | /retailer/offers | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/post-offer)
 POST | /retailer/offers/export | v1.3.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/post-offer-export)
-GET | /retailer/offers/export/{offer-export-id} | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-offer-export)
+GET | /retailer/offers/export/{offer-export-id} | v1.3.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-offer-export)
 GET | /retailer/offers/{offer-id} | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-offer)
 PUT | /retailer/offers/{offer-id} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/put-offer)
 PUT | /retailer/offers/{offer-id}/price | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/update-offer-price)
