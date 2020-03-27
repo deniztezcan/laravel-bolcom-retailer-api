@@ -124,7 +124,7 @@ class Offer extends Entity
             ],
         ]);
 
-        $deserialized = Serializer::deserialize((string) $response->getBody());
+        $deserialized = Serialize::deserialize((string) $response->getBody());
 
         return Event::fromResponse($deserialized);
     }
