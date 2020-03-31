@@ -44,18 +44,36 @@ Please set your API: `key` and `secret` in the `config/bolcom-retailer-v3.php`
 - [All features](#features)
 
 ### Commission
+#### Bulk
 To get commissions in bulk, we need to send EANs in bulk.
 ```php
-$request 		= BolRetailerV3::commissions()->getCommissions([['ean' => '3615674428738'], ['ean' => '0958054542376'], ['ean' => '1863180850327']]);
-$commissions 	= $request->commissions;
+$request = BolRetailerV3::commissions()->getCommissions([['ean' => '3615674428738'], ['ean' => '0958054542376'], ['ean' => '1863180850327']]);
+$commissions = $request->commissions;
 ```
-
+#### Single
 To get commissions for the single EAN.
 ```php
 $commission = BolRetailerV3::commissions()->getCommission('3615674428738');
 ```
 
 ### Offers
+#### Create
+It is possible to create an offer via the v3 api
+```php
+BolRetailerV3::offers()->createOffer(
+	$ean,
+	$conditionName, //  "NEW" "AS_NEW" "GOOD" "REASONABLE" "MODERATE",
+	$conditionCategory, // "NEW" "SECONDHAND"
+	$referenceCode, // Your internal SKU or other ID
+	$onHoldByRetailer,
+	$unknownProductTitle, 
+	$price,
+	$stockAmount,
+	$stockManagedByRetailer, //False incase you want Bol to remove the stock automatically from their system based on orders
+	$fulfilmentType, //"FBB" "FBR" (FBB - Fulfilment By Bol) (FBR - Fulfilment by Retailer)
+	$fulfilmentDeliveryCode //"24uurs-23" "24uurs-22" "24uurs-21" "24uurs-20" "24uurs-19" "24uurs-18" "24uurs-17" "24uurs-16" "24uurs-15" "24uurs-14" "24uurs-13" "24uurs-12" "1-2d" "2-3d" "3-5d" "4-8d" "1-8d" "MijnLeverbelofte" 
+);
+```
 
 ## Features
 The following features are available (an - means the feature is planned, but not yet included):
