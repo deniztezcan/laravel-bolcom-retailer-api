@@ -38,8 +38,24 @@ php artisan vendor:publish --provider="DenizTezcan\BolRetailerV3\BolServiceProvi
 Please set your API: `key` and `secret` in the `config/bolcom-retailer-v3.php`
 
 ## How to use
-- [Quick Usage](#usage-usage-example)
-- [Features](#features)
+- [Commission](#commission)
+- [Offers](#offers)
+- [Orders](#orders)
+- [All features](#features)
+
+### Commission
+To get commissions in bulk, we need to send EANs in bulk.
+```php
+$request 		= BolRetailerV3::commissions()->getCommissions([['ean' => '3615674428738'], ['ean' => '0958054542376'], ['ean' => '1863180850327']]);
+$commissions 	= $request->commissions;
+```
+
+To get commissions for the single EAN.
+```php
+$commission = BolRetailerV3::commissions()->getCommission('3615674428738');
+```
+
+### Offers
 
 ## Features
 The following features are available (an - means the feature is planned, but not yet included):
