@@ -126,6 +126,35 @@ BolRetailerV3::offers()->updateOfferStock(
 );
 ```
 
+### Orders
+####  Get open orders
+```php
+$orders = BolRetailerV3::orders()->getOrders();
+```
+
+####  Get order by order-id
+```php
+$order = BolRetailerV3::orders()->getOrder($orderId);
+```
+
+####  Cancel order by order-item-id
+```php
+BolRetailerV3::orders()->cancelOrderItem(
+	$orderItemId,
+	$reasonCode //"OUT_OF_STOCK" "REQUESTED_BY_CUSTOMER" "BAD_CONDITION" "HIGHER_SHIPCOST" "INCORRECT_PRICE" "NOT_AVAIL_IN_TIME" "NO_BOL_GUARANTEE" "ORDERED_TWICE" "RETAIN_ITEM" "TECH_ISSUE" "UNFINDABLE_ITEM" "OTHER"
+);
+```
+
+####  Ship order by order-item-id
+```php
+BolRetailerV3::orders()->cancelOrderItem(
+	$shipOrderItem,
+	$shipmentReference, //optional only for internal purposes
+	$transporterCode, // TNT for PostNL
+	$trackAndTrace, // Track and Trace number
+);
+```
+
 ## Features
 The following features are available (an - means the feature is planned, but not yet included):
 
