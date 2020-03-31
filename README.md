@@ -38,10 +38,22 @@ php artisan vendor:publish --provider="DenizTezcan\BolRetailerV3\BolServiceProvi
 Please set your API: `key` and `secret` in the `config/bolcom-retailer-v3.php`
 
 ## How to use
-- [Commission](#commission)
-- [Offers](#offers)
-- [Orders](#orders)
-- [All features](#features)
+* [Commission](#commission)
+	* [Bulk](#bulk)
+	* [Single](#single)
+* [Offers](#offers)
+	* [Create](#create)
+	* [CSV dump](#csv%20dump)
+	* [Get Offer by Offer ID](#get%20offer%20by%20offer%20ID)
+	* [Update offer price](#Update%20offer%20price)
+	* [Update fulfilment promise](#Update%20fulfilment%20promise)
+	* [Update offer stock](#Update%20offer%20stock)
+* [Orders](#orders)
+	* [Get open orders](#Get%20open%20orders)
+	* [Get order by order-id](#Get%20order%20by%20order-id)
+	* [Cancel order by order-item-id](#Cancel%20order%20by%20order-item-id)
+	* [Ship order by order-item-id](#Ship%20order%20by%20order-item-id)
+* [All features](#features)
 
 ### Commission
 #### Bulk
