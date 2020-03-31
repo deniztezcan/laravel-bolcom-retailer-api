@@ -86,7 +86,44 @@ $csv = BolRetailerV3::offers()->handleDumpRequest((string) $event->entityId);
 #### Get Offer by Offer ID
 You can get a specific offers by it's offer id
 ```php
-$offer = BolRetailerV3::offers()->getOffer('014c5b04-1a80-481c-bab1-009efb129b20');
+$offer = BolRetailerV3::offers()->getOffer($offerId);
+```
+
+#### Update fulfilment promise
+You can update the fulfilment promise of an offer by it's offer id
+```php
+BolRetailerV3::offers()->updateOffer(
+	$offerId,
+	$referenceCode,
+	$onHoldByRetailer,
+	$unknownProductTitle,
+	$fulfilmentType, //"FBB" "FBR" (FBB - Fulfilment By Bol) (FBR - Fulfilment by Retailer)
+	$fulfilmentDeliveryCode //"24uurs-23" "24uurs-22" "24uurs-21" "24uurs-20" "24uurs-19" "24uurs-18" "24uurs-17" "24uurs-16" "24uurs-15" "24uurs-14" "24uurs-13" "24uurs-12" "1-2d" "2-3d" "3-5d" "4-8d" "1-8d" "MijnLeverbelofte" 
+);
+```
+
+#### Update offer price
+You can update the price of an offer by it's offer id
+```php
+BolRetailerV3::offers()->updateOfferPrice(
+	$offerId,
+	[
+		[
+			'quantity' => 1,
+			'price' => 1.00
+		]
+	]
+);
+```
+
+#### Update offer stock
+You can update the stock of an offer by it's offer id
+```php
+BolRetailerV3::offers()->updateOfferStock(
+	$offerId,
+	$amount,
+	$managedByRetailer
+);
 ```
 
 ## Features
