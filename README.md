@@ -83,6 +83,12 @@ sleep(120); //it takes some time for bol to generate the CSV a sleep is needed t
 $csv = BolRetailerV3::offers()->handleDumpRequest((string) $event->entityId);
 ```
 
+#### Get Offer by Offer ID
+You can get a specific offers by it's offer id
+```php
+$offer = BolRetailerV3::offers()->getOffer('014c5b04-1a80-481c-bab1-009efb129b20');
+```
+
 ## Features
 The following features are available (an - means the feature is planned, but not yet included):
 
