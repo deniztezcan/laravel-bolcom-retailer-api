@@ -75,6 +75,14 @@ BolRetailerV3::offers()->createOffer(
 );
 ```
 
+#### CSV dump
+To get a list of all offers you have in CSV
+```php
+$event = BolRetailerV3::offers()->requestDump();
+sleep(120); //it takes some time for bol to generate the CSV a sleep is needed to make sure the CSV is ready
+$csv = BolRetailerV3::offers()->handleDumpRequest((string) $event->entityId);
+```
+
 ## Features
 The following features are available (an - means the feature is planned, but not yet included):
 
