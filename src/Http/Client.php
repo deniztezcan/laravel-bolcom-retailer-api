@@ -14,8 +14,8 @@ class Client extends AbstractClient
     private $client_id = '';
     private $client_secret = '';
 
-    private $expiration;
-    private $access_token = '';
+    private $expiration = [];
+    private $access_token = [];
     private $token_type = 'Bearer';
     private $scope = 'RETAILER';
 
@@ -49,10 +49,10 @@ class Client extends AbstractClient
         $deserialized = Serialize::deserialize((string) $response->getBody());
         $model = Auth::fromResponse($deserialized);
 
-        $this->access_token = $model->access_token;
+        $this->access_token[$this->getClientId()] = $model->access_token;
         $this->scope = $model->scope;
         $this->token_type = $model->token_type;
-        $this->expiration = Carbon::now()->addSeconds($model->expires_in);
+        $this->expiration[$this->getClientId()] = Carbon::now()->addSeconds($model->expires_in);
     }
 
     public function authenticatedRequest(
@@ -65,8 +65,14 @@ class Client extends AbstractClient
             $this->authenticate();
         }
 
-        $parameters = array_filter($parameters);
-        $headers['Authorization'] = "{$this->token_type} {$this->access_token}";
+        if(isset($parameters['amount']) && $parameters['amount'] == 0){
+            $parameters = array_filter($parameters);
+            $parameters['amount'] = 0;
+        }else{
+            $parameters = array_filter($parameters);
+        }
+        
+        $headers['Authorization'] = "{$this->token_type} {$this->access_token[$this->getClientId()]}";
 
         switch ($method) {
             case 'GET':
@@ -97,7 +103,12 @@ class Client extends AbstractClient
 
     public function isAuthenticated(): bool
     {
-        return $this->access_token != '' && Carbon::now()->isBefore($this->expiration);
+        if(isset($this->access_token[$this->getClientId()]) && $this->access_token[$this->getClientId()] != ""){
+            if(Carbon::now()->isBefore($this->expiration[$this->getClientId()])){
+                return true;
+            }
+        }
+        return false;
     }
 
     public function setDemoMode(bool $is_demo): void

@@ -9,7 +9,7 @@ A Laravel package for the Bol.com v5 Retailer API. Losely based on the incomplet
 
 ## Instalation
 ```
-composer require deniztezcan/laravel-bolcom-v3-api
+composer require deniztezcan/laravel-bolcom-retailer-api
 ```
 
 Add a ServiceProvider to your providers array in `config/app.php`:
