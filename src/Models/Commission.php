@@ -6,7 +6,7 @@ class Commission extends BaseModel
 {
     public $ean;
     public $condition;
-    public $price;
+    public $unitPrice;
     public $fixedAmount;
     public $percentage;
     public $totalCost;

@@ -6,7 +6,7 @@ class Offer extends BaseModel
 {
     public $offerId;
     public $ean;
-    public $referenceCode;
+    public $reference;
     public $onHoldByRetailer;
     public $unknownProductTitle;
     public $pricing;
@@ -18,7 +18,7 @@ class Offer extends BaseModel
     {
         $this->assertType($this->offerId, 'string');
         $this->assertType($this->ean, 'string');
-        $this->assertType($this->referenceCode, 'string');
+        $this->assertType($this->reference, 'string');
         $this->assertType($this->onHoldByRetailer, 'boolean');
         $this->assertType($this->unknownProductTitle, 'string');
         $this->assertType($this->pricing, 'object');
