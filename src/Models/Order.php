@@ -7,6 +7,9 @@ class Order extends BaseModel
     public $orderId;
     public $orderPlacedDateTime;
     public $orderItems;
+    public $pickupPoint;
+    public $shipmentDetails;
+    public $billingDetails;
 
     public function validate(): void
     {

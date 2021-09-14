@@ -9,8 +9,12 @@ abstract class BaseModel
 {
     public function assertType($var, string $type)
     {
-        if (gettype($var) != $type) {
-            throw new Exception('Variable is not of the type: '.$type.' but is of the type: '.gettype($var));
+        if (gettype($var) === null) {
+            info("unexpected expected null error");    
+        } else {
+            if (gettype($var) != $type) {
+                throw new Exception('Variable is not of the type: '.$type.' but is of the type: '.gettype($var));
+            }
         }
     }
 
@@ -20,9 +24,11 @@ abstract class BaseModel
         $instance = $ref->newInstanceWithoutConstructor();
 
         foreach ($deserialized as $propertyName => $propertyValue) {
-            $propRef = $ref->getProperty($propertyName);
-            $propRef->setAccessible(true);
-            $propRef->setValue($instance, $propertyValue);
+            if ($propertyName != "errorMessage") {
+                $propRef = $ref->getProperty($propertyName);
+                $propRef->setAccessible(true);
+                $propRef->setValue($instance, $propertyValue);
+            }
         }
 
         return $instance;

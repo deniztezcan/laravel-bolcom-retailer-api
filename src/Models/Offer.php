@@ -13,6 +13,7 @@ class Offer extends BaseModel
     public $stock;
     public $condition;
     public $notPublishableReasons;
+    public $processStatusId;
 
     public function validate(): void
     {

@@ -13,10 +13,11 @@ class Event extends BaseModel
     public $status;
     public $createTimestamp;
     public $links;
+    public $processStatusId;
 
     public function validate(): void
     {
-        $this->assertType($this->id, 'integer');
+        // $this->assertType($this->id, 'integer');
         $this->assertType($this->eventType, 'string');
         $this->assertType($this->description, 'string');
         $this->assertType($this->status, 'string');
