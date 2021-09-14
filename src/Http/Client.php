@@ -65,13 +65,13 @@ class Client extends AbstractClient
             $this->authenticate();
         }
 
-        if(isset($parameters['amount']) && $parameters['amount'] == 0){
+        if (isset($parameters['amount']) && $parameters['amount'] == 0) {
             $parameters = array_filter($parameters);
             $parameters['amount'] = 0;
-        }else{
+        } else {
             $parameters = array_filter($parameters);
         }
-        
+
         $headers['Authorization'] = "{$this->token_type} {$this->access_token[$this->getClientId()]}";
 
         switch ($method) {
@@ -103,11 +103,12 @@ class Client extends AbstractClient
 
     public function isAuthenticated(): bool
     {
-        if(isset($this->access_token[$this->getClientId()]) && $this->access_token[$this->getClientId()] != ""){
-            if(Carbon::now()->isBefore($this->expiration[$this->getClientId()])){
+        if (isset($this->access_token[$this->getClientId()]) && $this->access_token[$this->getClientId()] != '') {
+            if (Carbon::now()->isBefore($this->expiration[$this->getClientId()])) {
                 return true;
             }
         }
+
         return false;
     }
 
