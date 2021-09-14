@@ -1,9 +1,9 @@
 # Laravel Bol.com Retailer v5 API
-[![Latest Stable Version](https://poser.pugx.org/deniztezcan/laravel-bolcom-v3-api/v/stable)](https://packagist.org/packages/deniztezcan/laravel-bolcom-v3-api) 
-[![Total Downloads](https://poser.pugx.org/deniztezcan/laravel-bolcom-v3-api/downloads)](https://packagist.org/packages/deniztezcan/laravel-bolcom-v3-api) 
-[![Latest Unstable Version](https://poser.pugx.org/deniztezcan/laravel-bolcom-v3-api/v/unstable)](https://packagist.org/packages/deniztezcan/laravel-bolcom-v3-api) 
-[![License](https://poser.pugx.org/deniztezcan/laravel-bolcom-v3-api/license)](https://packagist.org/packages/deniztezcan/laravel-bolcom-v3-api)
-[![Maintainability](https://api.codeclimate.com/v1/badges/9057b79855fcc029f989/maintainability)](https://codeclimate.com/github/deniztezcan/laravel-bolcom-v3-api/maintainability)
+[![Latest Stable Version](https://poser.pugx.org/deniztezcan/laravel-bolcom-retailer-api/v/stable)](https://packagist.org/packages/deniztezcan/laravel-bolcom-retailer-api) 
+[![Total Downloads](https://poser.pugx.org/deniztezcan/laravel-bolcom-retailer-api/downloads)](https://packagist.org/packages/deniztezcan/laravel-bolcom-retailer-api) 
+[![Latest Unstable Version](https://poser.pugx.org/deniztezcan/laravel-bolcom-retailer-api/v/unstable)](https://packagist.org/packages/deniztezcan/laravel-bolcom-retailer-api) 
+[![License](https://poser.pugx.org/deniztezcan/laravel-bolcom-retailer-api/license)](https://packagist.org/packages/deniztezcan/laravel-bolcom-retailer-api)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9057b79855fcc029f989/maintainability)](https://codeclimate.com/github/deniztezcan/laravel-bolcom-retailer-api/maintainability)
 
 A Laravel package for the Bol.com v5 Retailer API. Losely based on the incomplete `jasperverbeet/bolcom-retailer-api-v3-php` package.
 
