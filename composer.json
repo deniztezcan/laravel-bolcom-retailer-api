@@ -1,14 +1,14 @@
 {
     "name": "deniztezcan/laravel-bolcom-v3-api",
-    "description": "Laravel package for the Bol.com v3 Retailer API",
+    "description": "Laravel package for the Bol.com v5 Retailer API",
     "type": "library",
     "license": "MIT",
     "version": "1.3.1",
-    "homepage": "https://github.com/deniztezcan/laravel-bolcom-v3-api",
+    "homepage": "https://github.com/deniztezcan/laravel-bolcom-retailer-api",
     "authors": [
         {
             "name": "Deniz Tezcan",
-            "email": "howdy@deniztezcan.me"
+            "email": "deniz@tezcanit.solutions"
         },
         {
             "name": "Jasper Verbeet",
@@ -20,26 +20,26 @@
         "php",
         "bol",
         "bolcom",
-        "v3",
+        "v5",
         "retailer",
         "laravel"
     ],
     "autoload": {
-        "psr-4": { "DenizTezcan\\BolRetailerV3\\" : "src/" }
+        "psr-4": { "DenizTezcan\\BolRetailer\\" : "src/" }
     },
     "minimum-stability": "stable",
     "require": {
         "guzzlehttp/guzzle": "^6.3",
-        "illuminate/support": "5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0",
+        "illuminate/support": "5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0|^7.0",
         "nesbot/carbon": "^2.16"
     },
     "extra": {
       "laravel": {
         "providers": [
-          "DenizTezcan\\BolRetailerV3\\BolServiceProvider"
+          "DenizTezcan\\BolRetailer\\BolServiceProvider"
         ],
         "aliases": {
-          "BolRetailerV3": "DenizTezcan\\BolRetailerV3\\Facades\\BolRetailerV3"
+          "BolRetailerAPI": "DenizTezcan\\BolRetailer\\Facades\\BolRetailerAPI"
         }
       }
     }
