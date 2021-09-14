@@ -1,6 +1,6 @@
 <?php
 
-namespace DenizTezcan\BolRetailerV3\Support;
+namespace DenizTezcan\BolRetailer\Support;
 
 use Exception;
 

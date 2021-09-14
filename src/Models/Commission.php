@@ -1,12 +1,12 @@
 <?php
 
-namespace DenizTezcan\BolRetailerV3\Models;
+namespace DenizTezcan\BolRetailer\Models;
 
 class Commission extends BaseModel
 {
     public $ean;
     public $condition;
-    public $price;
+    public $unitPrice;
     public $fixedAmount;
     public $percentage;
     public $totalCost;

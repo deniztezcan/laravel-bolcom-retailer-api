@@ -1,20 +1,20 @@
 <?php
 
-namespace DenizTezcan\BolRetailerV3;
+namespace DenizTezcan\BolRetailer;
 
-use DenizTezcan\BolRetailerV3\Entities\Commission;
-use DenizTezcan\BolRetailerV3\Entities\Offer;
-use DenizTezcan\BolRetailerV3\Entities\Order;
-use DenizTezcan\BolRetailerV3\Http\Client;
+use DenizTezcan\BolRetailer\Entities\Commission;
+use DenizTezcan\BolRetailer\Entities\Offer;
+use DenizTezcan\BolRetailer\Entities\Order;
+use DenizTezcan\BolRetailer\Http\Client;
 
-class BolRetailerV3
+class BolRetailerAPI
 {
     protected $client = null;
 
     public function __construct()
     {
         if ($this->client === null) {
-            $this->client = new Client(config('bolcom-retailer-v3.api.client_id'), config('bolcom-retailer-v3.api.client_secret'));
+            $this->client = new Client(config('bolcom-retailer.api.client_id'), config('bolcom-retailer.api.client_secret'));
         }
         $this->client->authenticate();
     }

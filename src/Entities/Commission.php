@@ -1,10 +1,10 @@
 <?php
 
-namespace DenizTezcan\BolRetailerV3\Entities;
+namespace DenizTezcan\BolRetailer\Entities;
 
-use DenizTezcan\BolRetailerV3\Models\Commission as CommissionModel;
-use DenizTezcan\BolRetailerV3\Models\Commissions;
-use DenizTezcan\BolRetailerV3\Support\Serialize;
+use DenizTezcan\BolRetailer\Models\Commission as CommissionModel;
+use DenizTezcan\BolRetailer\Models\Commissions;
+use DenizTezcan\BolRetailer\Support\Serialize;
 
 class Commission extends Entity
 {

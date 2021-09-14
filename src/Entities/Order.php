@@ -2,10 +2,10 @@
 
 namespace DenizTezcan\BolRetailerV3\Entities;
 
-use DenizTezcan\BolRetailerV3\Models\Event;
-use DenizTezcan\BolRetailerV3\Models\Order as OrderModel;
-use DenizTezcan\BolRetailerV3\Models\Orders;
-use DenizTezcan\BolRetailerV3\Support\Serialize;
+use DenizTezcan\BolRetailer\Models\Event;
+use DenizTezcan\BolRetailer\Models\Order as OrderModel;
+use DenizTezcan\BolRetailer\Models\Orders;
+use DenizTezcan\BolRetailer\Support\Serialize;
 
 class Order extends Entity
 {
