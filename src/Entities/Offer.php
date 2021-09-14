@@ -1,10 +1,10 @@
 <?php
 
-namespace DenizTezcan\BolRetailerV3\Entities;
+namespace DenizTezcan\BolRetailer\Entities;
 
-use DenizTezcan\BolRetailerV3\Models\Event;
-use DenizTezcan\BolRetailerV3\Models\Offer as OfferModel;
-use DenizTezcan\BolRetailerV3\Support\Serialize;
+use DenizTezcan\BolRetailer\Models\Event;
+use DenizTezcan\BolRetailer\Models\Offer as OfferModel;
+use DenizTezcan\BolRetailer\Support\Serialize;
 
 class Offer extends Entity
 {
