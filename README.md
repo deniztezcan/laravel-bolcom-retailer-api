@@ -17,7 +17,7 @@ Add a ServiceProvider to your providers array in `config/app.php`:
     'providers' => [
     	//other things here
 
-    	DenizTezcan\BolRetailerV3\BolServiceProvider::class,
+    	DenizTezcan\BolRetailer\BolServiceProvider::class,
     ];
 ```
 
@@ -26,17 +26,17 @@ Add the facade to the facades array:
     'aliases' => [
     	//other things here
 
-    	'BolRetailerV3' => DenizTezcan\BolRetailerV3\Facades\BolRetailerV3::class,
+    	'BolRetailerAPI' => DenizTezcan\BolRetailer\Facades\BolRetailerAPI::class,
     ];
 ```
 
 Finally, publish the configuration files:
 ```
-php artisan vendor:publish --provider="DenizTezcan\BolRetailerV3\BolServiceProvider"
+php artisan vendor:publish --provider="DenizTezcan\BolRetailer\BolServiceProvider"
 ```
 
 ### Configuration
-Please set your API: `key` and `secret` in the `config/bolcom-retailer-v3.php`
+Please set your API: `key` and `secret` in the `config/bolcom-retailer.php`
 
 ## How to use
 * [Commission](#commission)
@@ -60,20 +60,20 @@ Please set your API: `key` and `secret` in the `config/bolcom-retailer-v3.php`
 #### Bulk
 To get commissions in bulk, we need to send EANs in bulk.
 ```php
-$request = BolRetailerV3::commissions()->getCommissions([['ean' => '3615674428738'], ['ean' => '0958054542376'], ['ean' => '1863180850327']]);
+$request = BolRetailerAPI::commissions()->getCommissions([['ean' => '3615674428738'], ['ean' => '0958054542376'], ['ean' => '1863180850327']]);
 $commissions = $request->commissions;
 ```
 #### Single
 To get commissions for the single EAN.
 ```php
-$commission = BolRetailerV3::commissions()->getCommission('3615674428738');
+$commission = BolRetailerAPI::commissions()->getCommission('3615674428738');
 ```
 
 ### Offers
 #### Create
 It is possible to create an offer via the v3 api
 ```php
-BolRetailerV3::offers()->createOffer(
+BolRetailerAPI::offers()->createOffer(
 	$ean,
 	$conditionName, //  "NEW" "AS_NEW" "GOOD" "REASONABLE" "MODERATE",
 	$conditionCategory, // "NEW" "SECONDHAND"
@@ -91,21 +91,21 @@ BolRetailerV3::offers()->createOffer(
 #### CSV dump
 To get a list of all offers you have in CSV
 ```php
-$event = BolRetailerV3::offers()->requestDump();
+$event = BolRetailerAPI::offers()->requestDump();
 sleep(120); //it takes some time for bol to generate the CSV a sleep is needed to make sure the CSV is ready
-$csv = BolRetailerV3::offers()->handleDumpRequest((string) $event->entityId);
+$csv = BolRetailerAPI::offers()->handleDumpRequest((string) $event->entityId);
 ```
 
 #### Get Offer by Offer ID
 You can get a specific offers by it's offer id
 ```php
-$offer = BolRetailerV3::offers()->getOffer($offerId);
+$offer = BolRetailerAPI::offers()->getOffer($offerId);
 ```
 
 #### Update fulfilment promise
 You can update the fulfilment promise of an offer by it's offer id
 ```php
-BolRetailerV3::offers()->updateOffer(
+BolRetailerAPI::offers()->updateOffer(
 	$offerId,
 	$referenceCode,
 	$onHoldByRetailer,
@@ -118,7 +118,7 @@ BolRetailerV3::offers()->updateOffer(
 #### Update offer price
 You can update the price of an offer by it's offer id
 ```php
-BolRetailerV3::offers()->updateOfferPrice(
+BolRetailerAPI::offers()->updateOfferPrice(
 	$offerId,
 	[
 		[
@@ -132,7 +132,7 @@ BolRetailerV3::offers()->updateOfferPrice(
 #### Update offer stock
 You can update the stock of an offer by it's offer id
 ```php
-BolRetailerV3::offers()->updateOfferStock(
+BolRetailerAPI::offers()->updateOfferStock(
 	$offerId,
 	$amount,
 	$managedByRetailer
@@ -142,17 +142,17 @@ BolRetailerV3::offers()->updateOfferStock(
 ### Orders
 ####  Get open orders
 ```php
-$orders = BolRetailerV3::orders()->getOrders();
+$orders = BolRetailerAPI::orders()->getOrders();
 ```
 
 ####  Get order by order-id
 ```php
-$order = BolRetailerV3::orders()->getOrder($orderId);
+$order = BolRetailerAPI::orders()->getOrder($orderId);
 ```
 
 ####  Cancel order by order-item-id
 ```php
-BolRetailerV3::orders()->cancelOrderItem(
+BolRetailerAPI::orders()->cancelOrderItem(
 	$orderItemId,
 	$reasonCode //"OUT_OF_STOCK" "REQUESTED_BY_CUSTOMER" "BAD_CONDITION" "HIGHER_SHIPCOST" "INCORRECT_PRICE" "NOT_AVAIL_IN_TIME" "NO_BOL_GUARANTEE" "ORDERED_TWICE" "RETAIN_ITEM" "TECH_ISSUE" "UNFINDABLE_ITEM" "OTHER"
 );
@@ -160,7 +160,7 @@ BolRetailerV3::orders()->cancelOrderItem(
 
 ####  Ship order by order-item-id
 ```php
-BolRetailerV3::orders()->cancelOrderItem(
+BolRetailerAPI::orders()->cancelOrderItem(
 	$shipOrderItem,
 	$shipmentReference, //optional only for internal purposes
 	$transporterCode, // TNT for PostNL
@@ -174,16 +174,16 @@ The following features are available (an - means the feature is planned, but not
 
 Method | URI | From Version | Link to Bol documentation
 --- | --- | --- | ---
-POST | /retailer/commission | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-commissions)
-GET | /retailer/commission/{ean} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-commission)
-POST | /retailer/offers | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/post-offer)
-POST | /retailer/offers/export | v1.3.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/post-offer-export)
-GET | /retailer/offers/export/{offer-export-id} | v1.3.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-offer-export)
-GET | /retailer/offers/{offer-id} | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-offer)
-PUT | /retailer/offers/{offer-id} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/put-offer)
-PUT | /retailer/offers/{offer-id}/price | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/update-offer-price)
-PUT | /retailer/offers/{offer-id}/stock | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/update-offer-stock)
-GET | /retailer/orders | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-orders)
-GET | /retailer/orders/{orders-id} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/get-order)
-PUT | /retailer/orders/{order-item-id}/cancellation | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/cancel-order)
-PUT | /retailer/orders/{order-item-id}/shipment | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v3#operation/ship-order-item)
+POST | /retailer/commission | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/get-commissions)
+GET | /retailer/commission/{ean} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/get-commission)
+POST | /retailer/offers | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/post-offer)
+POST | /retailer/offers/export | v1.3.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/post-offer-export)
+GET | /retailer/offers/export/{offer-export-id} | v1.3.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/get-offer-export)
+GET | /retailer/offers/{offer-id} | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/get-offer)
+PUT | /retailer/offers/{offer-id} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/put-offer)
+PUT | /retailer/offers/{offer-id}/price | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/update-offer-price)
+PUT | /retailer/offers/{offer-id}/stock | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/update-offer-stock)
+GET | /retailer/orders | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/get-orders)
+GET | /retailer/orders/{orders-id} | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/get-order)
+PUT | /retailer/orders/{order-item-id}/cancellation | v1.1.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/cancel-order)
+PUT | /retailer/orders/{order-item-id}/shipment | v1.0.0 | [link](https://api.bol.com/retailer/public/redoc/v5#operation/ship-order-item)
