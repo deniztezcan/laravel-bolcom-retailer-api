@@ -1,6 +1,6 @@
 <?php
 
-namespace DenizTezcan\BolRetailerV3;
+namespace DenizTezcan\BolRetailer;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -9,19 +9,19 @@ class BolServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/bolcom-retailer-v3.php' => config_path('bolcom-retailer-v3.php'),
+            __DIR__.'/../config/bolcom-retailer.php' => config_path('bolcom-retailer.php'),
         ]);
     }
 
     public function register()
     {
-        $this->app->bind('bolcom-retailer-v3', function () {
-            return new BolRetailerV3();
+        $this->app->bind('bolcom-retailer', function () {
+            return new BolRetailerAPI();
         });
     }
 
     public function provides()
     {
-        return ['bolcom-retailer-v3'];
+        return ['bolcom-retailer'];
     }
 }

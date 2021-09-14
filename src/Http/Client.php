@@ -1,10 +1,10 @@
 <?php
 
-namespace DenizTezcan\BolRetailerV3\Http;
+namespace DenizTezcan\BolRetailer\Http;
 
 use Carbon\Carbon;
-use DenizTezcan\BolRetailerV3\Models\Auth;
-use DenizTezcan\BolRetailerV3\Support\Serialize;
+use DenizTezcan\BolRetailer\Models\Auth;
+use DenizTezcan\BolRetailer\Support\Serialize;
 use Exception;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Response;
@@ -77,7 +77,7 @@ class Client extends AbstractClient
                     $this->getApiURL($endpoint),
                     $parameters,
                     array_merge(
-                        ['Content-Type' => 'application/vnd.retailer.v3+json'],
+                        ['Content-Type' => 'application/vnd.retailer.v5+json'],
                         $headers
                     )
                 );
@@ -87,7 +87,7 @@ class Client extends AbstractClient
                     $this->getApiURL($endpoint),
                     $parameters,
                     array_merge(
-                        ['Content-Type' => 'application/vnd.retailer.v3+json'],
+                        ['Content-Type' => 'application/vnd.retailer.v5+json'],
                         $headers
                     ),
                 );

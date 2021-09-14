@@ -1,10 +1,10 @@
 <?php
 
-namespace DenizTezcan\BolRetailerV3\Entities;
+namespace DenizTezcan\BolRetailer\Entities;
 
-use DenizTezcan\BolRetailerV3\Models\Event;
-use DenizTezcan\BolRetailerV3\Models\Offer as OfferModel;
-use DenizTezcan\BolRetailerV3\Support\Serialize;
+use DenizTezcan\BolRetailer\Models\Event;
+use DenizTezcan\BolRetailer\Models\Offer as OfferModel;
+use DenizTezcan\BolRetailer\Support\Serialize;
 
 class Offer extends Entity
 {
@@ -12,13 +12,13 @@ class Offer extends Entity
         string $ean,
         string $conditionName,
         string $conditionCategory,
-        string $referenceCode,
+        string $reference,
         bool $onHoldByRetailer,
         string $unknownProductTitle,
-        float $price,
+        float $unitPrice,
         int $stockAmount,
         bool $stockManagedByRetailer,
-        string $fulfilmentType,
+        string $fulfilmentMethod,
         string $fulfilmentDeliveryCode
     ): Event {
         $response = $this->client->authenticatedRequest('POST', 'offers', [
@@ -27,14 +27,14 @@ class Offer extends Entity
                 'name'                  => $conditionName,
                 'category'              => $conditionCategory,
             ],
-            'referenceCode'         => $referenceCode,
+            'reference'             => $reference,
             'onHoldByRetailer'      => $onHoldByRetailer,
             'unknownProductTitle'   => $unknownProductTitle,
             'pricing'               => [
                 'bundlePrices'          => [
                     [
                         'quantity'          => 1,
-                        'price'             => $price,
+                        'unitPrice'         => $price,
                     ],
                 ],
             ],
@@ -43,7 +43,7 @@ class Offer extends Entity
                 'managedByRetailer'     => $stockManagedByRetailer,
             ],
             'fulfilment'            => [
-                'type'                  => $fulfilmentType,
+                'method'                => $fulfilmentMethod,
                 'deliveryCode'          => $fulfilmentDeliveryCode,
             ],
         ]);
@@ -73,7 +73,7 @@ class Offer extends Entity
         $event = Event::fromResponse($deserialized);
 
         if ($event->status == 'SUCCESS') {
-            $response = $this->client->authenticatedRequest('GET', 'offers/export/'.$event->entityId, [], ['Accept' => 'application/vnd.retailer.v3+csv']);
+            $response = $this->client->authenticatedRequest('GET', 'offers/export/'.$event->entityId, [], ['Accept' => 'application/vnd.retailer.v5+csv']);
 
             return (string) $response->getBody();
         } else {
@@ -93,18 +93,18 @@ class Offer extends Entity
 
     public function updateOffer(
         string $offerId,
-        string $referenceCode,
+        string $reference,
         bool $onHoldByRetailer,
         string $unknownProductTitle,
-        string $fulfilmentType,
+        string $fulfilmentMethod,
         string $fulfilmentDeliveryCode
     ): Event {
         $response = $this->client->authenticatedRequest('PUT', 'offers/'.$offerId, [
-            'referenceCode'         => $referenceCode,
+            'reference'             => $reference,
             'onHoldByRetailer'      => $onHoldByRetailer,
             'unknownProductTitle'   => $unknownProductTitle,
             'fulfilment'            => [
-                'type'                  => $fulfilmentType,
+                'method'                => $fulfilmentMethod,
                 'deliveryCode'          => $fulfilmentDeliveryCode,
             ],
         ]);

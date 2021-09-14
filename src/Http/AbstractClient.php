@@ -1,6 +1,6 @@
 <?php
 
-namespace DenizTezcan\BolRetailerV3\Http;
+namespace DenizTezcan\BolRetailer\Http;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
@@ -17,7 +17,7 @@ class AbstractClient
     private function getDefaultHeaders(): array
     {
         return [
-            'Accept' => 'application/vnd.retailer.v3+json',
+            'Accept' => 'application/vnd.retailer.v5+json',
         ];
     }
 

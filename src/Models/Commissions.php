@@ -1,6 +1,6 @@
 <?php
 
-namespace DenizTezcan\BolRetailerV3\Models;
+namespace DenizTezcan\BolRetailer\Models;
 
 class Commissions extends BaseModel
 {
