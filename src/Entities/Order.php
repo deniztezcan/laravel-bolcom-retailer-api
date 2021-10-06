@@ -1,6 +1,6 @@
 <?php
 
-namespace DenizTezcan\BolRetailerV3\Entities;
+namespace DenizTezcan\BolRetailer\Entities;
 
 use DenizTezcan\BolRetailer\Models\Event;
 use DenizTezcan\BolRetailer\Models\Order as OrderModel;
