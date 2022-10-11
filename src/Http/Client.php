@@ -83,7 +83,7 @@ class Client extends AbstractClient
                     $this->getApiURL($endpoint),
                     $parameters,
                     array_merge(
-                        ['Content-Type' => 'application/vnd.retailer.v5+json'],
+                        ['Content-Type' => 'application/vnd.retailer.v8+json'],
                         $headers
                     )
                 );
@@ -93,7 +93,7 @@ class Client extends AbstractClient
                     $this->getApiURL($endpoint),
                     $parameters,
                     array_merge(
-                        ['Content-Type' => 'application/vnd.retailer.v5+json'],
+                        ['Content-Type' => 'application/vnd.retailer.v8+json'],
                         $headers
                     ),
                 );

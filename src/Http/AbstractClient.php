@@ -17,7 +17,7 @@ class AbstractClient
     private function getDefaultHeaders(): array
     {
         return [
-            'Accept' => 'application/vnd.retailer.v5+json',
+            'Accept' => 'application/vnd.retailer.v8+json',
         ];
     }
 
