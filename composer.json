@@ -3,7 +3,7 @@
     "description": "Laravel package for the Bol.com v5 Retailer API",
     "type": "library",
     "license": "MIT",
-    "version": "2.1.0",
+    "version": "2.2.1",
     "homepage": "https://github.com/deniztezcan/laravel-bolcom-retailer-api",
     "authors": [
         {
