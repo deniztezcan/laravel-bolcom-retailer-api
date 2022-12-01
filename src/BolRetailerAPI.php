@@ -5,6 +5,7 @@ namespace DenizTezcan\BolRetailer;
 use DenizTezcan\BolRetailer\Entities\Commission;
 use DenizTezcan\BolRetailer\Entities\Offer;
 use DenizTezcan\BolRetailer\Entities\Order;
+use DenizTezcan\BolRetailer\Entities\Product;
 use DenizTezcan\BolRetailer\Http\Client;
 
 class BolRetailerAPI
@@ -46,5 +47,10 @@ class BolRetailerAPI
     public function orders(): Order
     {
         return new Order($this->client);
+    }
+
+    public function products(): Product
+    {
+        return new Product($this->client);
     }
 }
